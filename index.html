@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,53 @@
     <!-- insertar vueJs por cdn-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <title>Document</title>
+    <title>VueJs</title>
 </head>
+
 <body>
-    
+    <h1>Probando Vue.js</h1>
+    <hr>
+    <div id="app">
+
+        <p>Mensaje: {{message}}</p>
+        <hr>
+        <p>Contador: {{contador}}</p>
+        <hr>
+        <span v-if="mosMsg">{{message2}}</span>
+
+        <span v-bind:title="message2">
+            <!-- v-bind no actualiza los cambios en el objeto data -->
+            <input type="text" v-bind:value="contador">
+            <button v-on:click="sumarUno">Contar</button>
+            <!-- el v-model actualiza los cambios en el objeto data -->
+            <input type="text" v-model="contador">
+            <hr>
+            <button @click="handleClick">Agregar items</button>
+
+        </span>
+
+        <hr>
+
+        <ul>
+            <li v-for="item in items">
+                {{item.id}} - {{ item.titulo }}
+            </li>
+        </ul>
+        <hr>
+        
+        <!-- <p>{{items}}</p> -->
+        <!-- componente eze-lista -->
+        <eze-lista v-bind:items="items" titulo="Lista 1" pie="Pie 1"></eze-lista>
+        <eze-lista @onEze="handleonEze2" v-bind:items="items2" titulo="Lista 2" pie="Pie 2">
+
+
+
+
+    </div>
+
+
+
+    <script src="index.js"></script>
 </body>
+
 </html>
